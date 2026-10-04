@@ -1,10 +1,10 @@
 # QIQC Challenge Participant Guide
 
-Agentic Quantum Coding Challenge | GaugeForge | 2026-10-03.2
+Agentic Quantum Coding Challenge | GaugeForge | 2026-10-04.1
 
-Build the system around the model. Design an agent harness that plans experiments, uses quantum tools, responds to evidence and produces a verifiable result. Every official entrant uses **HY4**. The challenge starts on **8 November 2026**; start time, registration opening, final deadline and Demo Day are **To be announced**.
+Build the system around the model. Design an agent harness that plans experiments, uses quantum tools, responds to evidence and produces a verifiable result. Every official entrant uses **Hunyuan 4 Preview (HY4)**. The challenge starts on **8 November 2026**; the final submission deadline is **10 November 2026** and Demo Day is **12 November 2026**. Registration opening time is To be announced.
 
-This guide separates confirmed conditions from a **proposed competition protocol**. The detailed protocol will be frozen before registration and official submissions open. No event upload API, registration form or HY4 starter adapter is claimed to be live in this edition.
+This guide separates confirmed conditions from a **proposed competition protocol**. The detailed protocol will be frozen before registration and official submissions open. No event upload API, registration form or Hunyuan 4 Preview starter adapter is claimed to be live in this edition.
 
 ## Who can enter
 
@@ -42,7 +42,7 @@ harbor view jobs
 
 The `nop` agent requires no API key and does no science. For this task, reward **0 is the expected installation-check result**, not a failed installation. Build all public verifier images with `uv run python tools/build_qsim_images.py` before running the whole public directory.
 
-The repository includes `configs/harbor/time_budgeted_hamlearn_10q_codex.yaml` as a working example of a Harbor agent configuration. It is a Codex example, **not the official HY4 starter harness**. The event adapter will be announced once the exact HY4 API and tool-calling behavior are validated. Do not simply rename the model string. Harbor 0.18.0 model overrides require both `-a` and `-m`; check the pinned `harbor run --help`.
+The repository includes `configs/harbor/time_budgeted_hamlearn_10q_codex.yaml` as a working example of a Harbor agent configuration. It is a Codex example, **not the official Hunyuan 4 Preview starter harness**. The event adapter will be announced once the exact API and tool-calling behavior are validated. Do not simply rename the model string. Harbor 0.18.0 model overrides require both `-a` and `-m`; check the pinned `harbor run --help`.
 
 ## Five public practice tasks
 
@@ -64,13 +64,13 @@ Quantum-Harbor runs the agent and the simulated device in separate environments.
 
 For example, the public Hamiltonian task uses `run_hamiltonian_probe_batch` and `submit_final_answer`. Its answer is a coefficient vector with uncertainties, following the public instruction schema. Other tasks require different payloads. A task-level final answer is not the same as submitting the harness to the competition.
 
-Proposed tool policy: Python and other declared local code, scientific libraries, deterministic optimization, and the task's approved MCP tools are allowed. Multiple agent roles may use the same approved HY4 endpoint within the shared budget. Other inference models, human intervention in an official run, undeclared remote services, changing verifiers, and reading materials outside the permitted agent environment are not allowed. Development assistance must be disclosed where it contributes code or data; the runtime restriction applies to all model calls made by the submitted system.
+Proposed tool policy: Python and other declared local code, scientific libraries, deterministic optimization, and the task's approved MCP tools are allowed. Multiple agent roles may use the same approved Hunyuan 4 Preview endpoint within the shared budget. Other inference models, human intervention in an official run, undeclared remote services, changing verifiers, and reading materials outside the permitted agent environment are not allowed. Development assistance must be disclosed where it contributes code or data; the runtime restriction applies to all model calls made by the submitted system.
 
 Dependencies must be pinned and legally redistributable. Declare system packages, model-facing tools, hardware requirements and all network destinations. The proposed official environment has no general Internet access during a run; dependencies are installed in a controlled build stage. No privileged containers, Docker socket access or embedded credentials. Exact CPU, RAM, disk, package policy and build limits will be published before official submission.
 
 ## Model version and budgets
 
-Competition model: **HY4**. Exact API model, frozen version and development allowance: To be announced. Tencent is a prospective provider, not a confirmed sponsor. The paper's Hunyuan T4* preview label does not establish the final API identifier. The organizer will freeze the endpoint, model ID, version, reasoning settings, context/output limits and per-task resource budgets before official evaluation.
+Competition model: **Hunyuan 4 Preview (HY4)**. Tencent provider candidate; exact API ID, frozen snapshot and development allowance: To be announced. Tencent is the expected provider, but the event does not claim a confirmed sponsorship. The organizer will freeze the endpoint, model ID, version, reasoning settings, context/output limits and per-task resource budgets before official evaluation.
 
 Each team has at most **3 complete official benchmark evaluations**. Any provider-supported development allowance is separate and has not been confirmed. Unlimited API credits, if agreed, do not remove experiment shot/job limits, timeouts or the official three-evaluation cap.
 
@@ -103,7 +103,7 @@ Proposed candidate rule: your **last valid accepted full evaluation** before the
 
 ## Public and hidden evaluation
 
-The public board shows the five designated public-task scores. Hidden evaluation scores appear only after the submission deadline and reproducibility checks. The final task count and manifest will be announced; the paper's 49 tasks do not guarantee a 49-task competition.
+The public board shows the five designated public-task scores. Hidden evaluation scores appear only after the submission deadline and reproducibility checks. The competition uses all 49 QIQCBench tasks; five are public and the remaining 44 are hidden during the event.
 
 Published paper tasks and repository examples are accessible learning material and may have appeared in training or development. “Hidden” means withheld during the event, **not proven uncontaminated**. Teams must disclose known prior use of benchmark material and follow the final data policy. Official evaluation should use frozen conditions and independently verifiable evidence. Do not claim a scientific generalization beyond the tested conditions.
 
@@ -111,9 +111,9 @@ Published paper tasks and repository examples are accessible learning material a
 
 ## Proposed scoring and ranking
 
-Each task contributes a normalized score q_i in [0,1]. Existing released tasks produce binary reward 0 or 1. If a continuous-score task is included, the organizer will publish its direction, thresholds and mapping before competition; scores will not be normalized against the best or worst entrant after the event.
+Each of the 49 tasks contributes a normalized score q_i in [0,1]. Existing released tasks produce binary reward 0 or 1. If a continuous-score task is included, the organizer will publish its direction, thresholds and mapping before competition; scores will not be normalized against the best or worst entrant after the event.
 
-**Final automated score = 100 × sum of all task scores / total task count.** Public and hidden tasks are equally weighted per task. The public board uses the same formula over its five tasks. It is not a 50:50 average of the two leaderboards. Illustrative example: 3/5 public passes and 4/5 hidden passes give public score 60 and combined score 70 across ten tasks; ten is an example, not an announced event count.
+**Final automated score = 100 × sum of all 49 task scores / 49.** Public and hidden tasks are equally weighted per task. The public board uses the same formula over its five public tasks. It is not a 50:50 average of the two leaderboards. For example, 3/5 public passes and 32/44 hidden passes gives public score 60 and combined score 71.43.
 
 Proposed tie order: unrounded total score descending, then total effective task runtime ascending. Queue time and verified organizer outages are excluded; a timed-out task contributes its full task time limit. If these remain exactly equal, earlier final-candidate acceptance wins, then receipt ID lexicographic order. The same rules resolve the fifth-place boundary.
 
@@ -163,21 +163,21 @@ When registration opens, collect only identity/contact information needed to run
 | Fourth place | 500 |
 | Fifth place | 500 |
 
-A **USD 15,000 Challenger Award** goes only to the **first qualifying HY4 team to strictly exceed a fixed GPT-6 Astra baseline on the hidden leaderboard**. There is one winning team, not a shared pool or an award for every qualifying team. Timestamp policy, whether it stacks with placement awards, payment terms and exact baseline are **To be announced**. Placement awards follow the final expert ordering after appeals.
+A **USD 15,000 Challenger Award** goes only to the **strict first qualifying Hunyuan 4 Preview (HY4) team to exceed a fixed GPT-6 Astra baseline on the hidden leaderboard**. There is one winning team, not a shared pool or an award for every qualifying team. If no team exceeds the baseline, it is not paid. Timestamp policy, whether it stacks with placement awards, payment terms and exact baseline are **To be announced**. Placement awards follow the final expert ordering after appeals.
 
 ## FAQ
 
 **Do I need a quantum computer?** No. The released environment simulates quantum devices and verifies recorded results.
 
-**Can I use a different model or a multi-agent system?** Official inference uses only the frozen HY4. Multiple roles using that endpoint are allowed under the proposed shared-budget rule.
+**Can I use a different model or a multi-agent system?** Official inference uses only the frozen Hunyuan 4 Preview (HY4). Multiple roles using that endpoint are allowed under the proposed shared-budget rule.
 
-**Is the starter ready?** Public Quantum-Harbor examples are available. The competition-specific HY4 adapter and submission service are not yet released.
+**Is the starter ready?** Public Quantum-Harbor examples are available. The competition-specific Hunyuan 4 Preview adapter and submission service are not yet released.
 
 **Does a zero in the no-key check mean failure?** No. `nop` performs no experiment; zero is expected on the recommended Hamiltonian smoke check.
 
 **Are development calls unlimited?** Not confirmed. The official allowance is three full evaluations per team regardless of any future provider development offer.
 
-**Will you use all 49 paper tasks?** The event task count is TBA. Five tasks are already released for practice.
+**Will you use all 49 paper tasks?** Yes. Five tasks are public; 44 tasks are hidden during the event.
 
 **Can I register now?** The registration link is TBA. Ask shenhao.miao@gauge-forge.com for participation information; visiting the benchmark page does not register a team.
 

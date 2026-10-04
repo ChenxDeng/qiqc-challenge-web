@@ -1,12 +1,12 @@
 {
-  "version": "2026-10-03.2",
-  "updated": "2026-10-03",
+  "version": "2026-10-04.1",
+  "updated": "2026-10-04",
   "name": "Agentic Quantum Coding Challenge",
   "shortName": "QIQC Challenge",
   "organizer": "GaugeForge",
   "messaging": {
     "hook": "Can your harness beat GPT-6 Astra?",
-    "support": "Build a HY4-powered agent for quantum engineering.",
+    "support": "Build a Hunyuan 4 Preview agent for quantum engineering.",
     "awardHook": "$15,000 for the first breakthrough.",
     "cta": "Take the challenge."
   },
@@ -41,22 +41,27 @@
       "status": "pending"
     },
     "deadline": {
-      "label": "To be announced",
-      "status": "pending"
+      "date": "2026-11-10",
+      "label": "10 November 2026",
+      "status": "founder-confirmed",
+      "time": null
     },
     "demo": {
-      "label": "To be announced",
-      "status": "pending"
+      "date": "2026-11-12",
+      "label": "12 November 2026",
+      "status": "founder-confirmed",
+      "time": null
     }
   },
   "model": {
-    "label": "HY4",
+    "label": "Hunyuan 4 Preview",
+    "alias": "HY4",
     "apiId": null,
     "snapshot": null,
     "providerCandidate": "Tencent",
     "providerStatus": "prospective, not confirmed",
-    "publicStatus": "Exact API model, frozen version and development allowance: To be announced",
-    "evidence": "Paper names Tencent Hunyuan 4 preview as Hunyuan T4*. This does not identify a production API model or a competition snapshot."
+    "publicStatus": "Tencent provider candidate; exact API ID, frozen snapshot and development allowance: To be announced",
+    "evidence": "The paper labels the evaluated Tencent system Hunyuan T4*. The event uses the founder-confirmed public label Hunyuan 4 Preview; the exact callable endpoint still needs provider confirmation."
   },
   "rules": {
     "teamMin": 1,
@@ -65,11 +70,11 @@
     "maxFullEvaluations": 3,
     "finalists": 5,
     "license": "AGPL",
-    "licenseVersion": "AGPL-3.0-only proposed; version to be frozen before registration",
-    "dataRights": "Organizer and participating partner organizations may use submitted data and execution trajectories; detailed grant and named recipients must be disclosed before submission",
+    "licenseVersion": "AGPL; exact version to be frozen before registration",
+    "dataRights": "Organizer and participating partner organizations may use submitted data and execution trajectories; scope, recipients and publication terms are not yet specified",
     "entryFee": "Free entry (existing partner brief)",
     "publicTasks": 5,
-    "eventTaskCount": null,
+    "eventTaskCount": 49,
     "status": "Confirmed core conditions; detailed competition protocol proposed pending rule freeze"
   },
   "prizes": {
@@ -86,7 +91,7 @@
     "challengerBasis": "First team to strictly exceed the frozen GPT-6 Astra baseline on the hidden leaderboard using HY4",
     "challengerDistribution": "One award to the first qualifying team only",
     "challengerStacking": "To be announced",
-    "status": "Amounts and first-qualifying-team-only allocation confirmed by founder; timestamp policy, baseline, stacking and payment terms pending"
+    "status": "Amounts and first-qualifying-team-only allocation confirmed by founder; exact first-place clock, baseline, stacking and payment terms pending"
   },
   "partners": {
     "confirmed": [],

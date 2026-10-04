@@ -1,14 +1,14 @@
 # QIQC Challenge Partner Handbook
 
-GaugeForge | Partner discussion edition | 2026-10-03.2
+GaugeForge | Partner discussion edition | 2026-10-04.1
 
-GaugeForge is organizing the **Agentic Quantum Coding Challenge** around QIQCBench and Quantum-Harbor. Teams build an agent harness around the same HY4 model and demonstrate how planning, tool use and experimental decisions improve verified quantum engineering results. The challenge starts on **8 November 2026**. Registration, the submission deadline and Demo Day dates are **To be announced**.
+GaugeForge is organizing the **Agentic Quantum Coding Challenge** around QIQCBench and Quantum-Harbor. Teams build an agent harness around the same Tencent Hunyuan 4 Preview (HY4) model and demonstrate how planning, tool use and experimental decisions improve verified quantum engineering results. The challenge starts on **8 November 2026**; the final submission deadline is **10 November 2026** and Demo Day is **12 November 2026**. Registration opening time remains To be announced.
 
 ## Why participate
 
 This is an opportunity to engage developers who can turn a model into a working scientific system. Partners can help researchers discover the challenge, contribute technical judgment, or explore reproducible outputs after the event. Expected outputs include a public automated leaderboard, expert finalist review, selected success and failure case studies, and a technical report. These are planned outputs, not promises of audience size or commercial access.
 
-The benchmark paper reports 49 expert-authored tasks and 17 evaluated agentic systems. Those numbers describe the research, not the final competition task count or expected participation. Quantum-Harbor provides a virtual laboratory; the event does not promise access to physical quantum hardware.
+The competition uses all 49 QIQCBench tasks, with five designated public tasks. The benchmark paper also reports 17 evaluated agentic systems; that research number does not predict event participation. Quantum-Harbor provides a virtual laboratory; the event does not promise access to physical quantum hardware.
 
 ## Event conditions
 
@@ -17,7 +17,7 @@ The benchmark paper reports 49 expert-authored tasks and 17 evaluated agentic sy
 | Host | GaugeForge |
 | Format | Global, online; Free entry (existing partner brief) |
 | Teams | 1–3 people; no academic or professional eligibility restriction |
-| Competition model | HY4; Exact API model, frozen version and development allowance: To be announced |
+| Competition model | Hunyuan 4 Preview (HY4); Tencent provider candidate; exact API ID, frozen snapshot and development allowance: To be announced |
 | Official evaluations | Up to 3 complete benchmark evaluations per team |
 | Final review | Automated ranking selects 5 eligible finalists; experts determine their final order |
 | Code and data | AGPL code; organizer and participating partners have data and trajectory usage rights under disclosed terms |
@@ -75,7 +75,7 @@ Placement awards: 1st USD 1,500; 2nd USD 700; 3rd USD 700; 4th USD 500; 5th USD 
 | Before public partnership naming | Scope, contact, attribution, logo and data permissions |
 | Before formal event launch | Final public copy and link check; schedule confirmation |
 | Before competition start on 8 November 2026 | Technical readiness, reviewer confirmation, escalation contacts |
-| Before Demo Day, date TBA | Finalist evidence, conflicts and rubric briefing |
+| Before Demo Day, 12 November 2026 | Finalist evidence, conflicts and rubric briefing |
 | After final awards | Approved case studies, impact summary and optional next experiment |
 
 Public references: [Benchmark](https://gauge-forge.com/qiqc), [Quantum-Harbor](https://github.com/GaugeForge/Quantum-Harbor), [Research paper](https://arxiv.org/abs/2609.17439). Email: shenhao.miao@gauge-forge.com. Registration link: **To be announced**; the benchmark page provides research information and is not a registration form.
