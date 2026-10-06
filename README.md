@@ -4,7 +4,7 @@ The public English GaugeForge challenge website. Static HTML, CSS and JavaScript
 
 ## Repository and local folder
 
-Primary remote: https://github.com/GaugeForge/qiqc-challenge (`origin`). The earlier demo repository is retained as `demo`: https://github.com/ChenxDeng/GFdemo2. Existing website commits are preserved.
+Primary remote: https://github.com/ChenxDeng/qiqc-challenge-web (`origin`). The earlier demo repository is retained as `demo`: https://github.com/ChenxDeng/GFdemo2. Existing website commits are preserved.
 
 On this workstation, open this folder in Fork:
 
@@ -37,7 +37,7 @@ Open http://127.0.0.1:4174/. On Windows PowerShell, use `$env:PORT='4174'` follo
 | `server.mjs` | Local static preview server; defaults to port 4173 unless `PORT` is set. |
 | `dist/` | Generated public deployment snapshot, tracked together with its source. |
 | `.github/workflows/ci.yml` | Builds and checks that committed generated files match their sources. |
-| `.github/workflows/pages.yml` | Manually triggered GitHub Pages publication. |
+| `.github/workflows/pages.yml` | GitHub Pages publication on main pushes or manual dispatch. |
 
 Do not edit `dist/` or `src/index.html` directly. Edit the source, run `npm run build`, and commit source and generated changes together. No internal founder materials, hidden tasks or private answers belong in this repository. The original event-facts master lives outside this standalone website; coordinate factual changes with the event owner and keep the public guides consistent.
 
@@ -64,7 +64,7 @@ CI also rebuilds and rejects stale generated files. For interaction changes, che
 
 ## Publishing
 
-Pushing to `origin` versions the source and runs CI. Publication is a separate action: enable GitHub Pages with GitHub Actions as the source, then manually run **Publish website**. The workflow publishes only `dist/`. Publishing this new repository does not replace or redirect the existing GFdemo2 demo.
+Pushing to `origin` runs CI. Each push to `main` also runs **Publish website**, rebuilds the current source, and publishes only `dist/`. In Settings → Pages, the source must be **GitHub Actions**, not a branch root (which would render this README instead of the website). Manual workflow dispatch is also available. The live site is https://chenxdeng.github.io/qiqc-challenge-web/. The existing GFdemo2 demo is separate.
 
 The retained `demo` remote is for explicit legacy demo updates; normal pushes target `origin`. Do not push to it unless a legacy demo update is intended.
 
