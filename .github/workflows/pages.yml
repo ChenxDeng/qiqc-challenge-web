@@ -1,7 +1,5 @@
-name: Publish demo
+name: Publish website
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,6 +20,6 @@ jobs:
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
-      - name: Deploy demo
+      - name: Deploy website
         id: deployment
         uses: actions/deploy-pages@v4
