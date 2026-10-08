@@ -1,34 +1,82 @@
 # QIQC Challenge website
 
-Public English event site for GaugeForge. No registration backend, analytics, external fonts or model credentials. Participation links open an email draft; nothing is submitted automatically.
+The public English GaugeForge challenge website. Static HTML, CSS and JavaScript; no package dependencies, registration backend, analytics or model credentials.
 
-## Run locally
+## Repository and local folder
 
-Requires Node.js 20 or newer. No package installation is necessary.
+Primary remote: https://github.com/ChenxDeng/qiqc-challenge-web (`origin`). The earlier demo repository is retained as `demo`: https://github.com/ChenxDeng/GFdemo2. Existing website commits are preserved.
 
-```bash
+On this workstation, open this folder in Fork:
+
+`/Users/sisi/Documents/实习/GaugeForge/qiqc-challenge`
+
+The earlier copy under `qiqc-project-context-package/output/qiqc-challenge/website` is a historical delivery copy. Make future website edits in this independent repository.
+
+## Local preview
+
+Requires Node.js 20 or newer. No `npm install` is needed.
+
+```sh
 npm run build
-npm start
+PORT=4174 npm start
 ```
 
-Open http://127.0.0.1:4173. To use a different port in PowerShell, set `$env:PORT='4174'` before `npm start`.
+Open http://127.0.0.1:4174/. On Windows PowerShell, use `$env:PORT='4174'` followed by `npm start`. Rebuild after source changes, then refresh the page; the server serves `dist/` and does not need restarting after a build.
 
-## Content and build
+## Folder layout
 
-`generate.mjs` and `src/` are the complete editable public website source. `src/facts.json` is its public fact snapshot; `npm run build` regenerates the HTML from this configuration. In the founder delivery workspace, the authoritative `event-facts.json` and `tools/build.mjs` regenerate the public snapshot, documents and posters together. Synchronize any standalone fact change back to the founder master before the next complete release. Edit page copy in `generate.mjs`, not in generated `src/index.html`.
+| Path | Purpose |
+| --- | --- |
+| `generate.mjs` | Editable page markup and English copy; generates `src/index.html`. |
+| `src/styles.css` | Layout, theme, hover effects and animations. |
+| `src/app.js` | Rabi canvas, scroll transition, counters, timeline, task tabs and other interactions. |
+| `src/facts.json` | Public event facts used by the generator. |
+| `src/assets/` | Public images, SVG icons and third-party notices. |
+| `src/downloads/` | Public participant and partner guides (PDF, HTML and Markdown). |
+| `build.mjs` | Generates HTML and copies only allowlisted public files into `dist/`. |
+| `server.mjs` | Local static preview server; defaults to port 4173 unless `PORT` is set. |
+| `dist/` | Generated public deployment snapshot, tracked together with its source. |
+| `.github/workflows/ci.yml` | Builds and checks that committed generated files match their sources. |
+| `.github/workflows/pages.yml` | GitHub Pages publication on main pushes or manual dispatch. |
 
-Build output is `dist/`. Only `dist/` may be deployed. It contains no internal execution manual, research checkout, hidden benchmark materials or test answers. `build.mjs` uses an explicit source allowlist and does not traverse parent folders.
+Do not edit `dist/` or `src/index.html` directly. Edit the source, run `npm run build`, and commit source and generated changes together. No internal founder materials, hidden tasks or private answers belong in this repository. The original event-facts master lives outside this standalone website; coordinate factual changes with the event owner and keep the public guides consistent.
 
-## Cloudflare Pages
+## Version control in Fork
 
-Connect this repository to Pages; build command `npm run build`; output directory `dist`; Node 20 or newer. Alternatively use the official Wrangler CLI for direct upload: `npx wrangler pages deploy dist --project-name qiqc-challenge` after authenticating and creating the project. Keep the project and custom-domain operation within the authorized GaugeForge event scope.
+1. Open the folder above using **File → Open Repository**.
+2. Fetch `origin` before beginning work. Use a short feature branch for a coherent change, such as `ui/task-copy` or `fix/navigation`.
+3. Edit source files, run `npm run build`, then preview the affected interactions.
+4. Inspect the diff in Fork. Stage the relevant source and generated output together, then commit with a clear description.
+5. Push the branch to `origin` and merge through a pull request when ready. Pull uses fast-forward only to avoid accidental merge commits.
 
-Add `challenge.r-era.ai` in Pages Custom domains before creating the corresponding CNAME at the current DNS provider. Use the actual assigned Pages hostname; never guess it. Preserve all unrelated DNS and email records. Verify DNS, HTTPS, page content and links before switching poster QR codes to the challenge domain.
+`main` is the shared baseline. Do not force-push or rewrite shared history. No branch-protection settings are implied by this local setup; those are managed separately on GitHub. `.env` files, logs, dependency folders and OS metadata are ignored.
 
-## Source attribution
+## Checks
 
-Original analytical Rabi calibration illustration, generated for this event. It shows a dimensionless driven two-level model, not measured data or benchmark performance. Quantum-Harbor technical interfaces checked at `1f03d78e959cf02469568250f61f9af88a53146f`; repository code remains MIT. Event AGPL requirements apply to entrant harnesses, not automatically to all website content or upstream assets.
+```sh
+node --check generate.mjs
+node --check src/app.js
+npm run build
+git diff --check
+```
 
-## Design targets
+CI also rebuilds and rejects stale generated files. For interaction changes, check direct clicks, keyboard operation, rapid repeated input, reduced motion and section positioning. The site has no automated browser-test dependency; build checks are not visual verification.
 
-Mobile 4G and desktop; public indexable static HTML. Targets: WCAG 2.2 AA, mobile p75 LCP <= 2.0 s, INP <= 200 ms, CLS <= 0.1; JS <= 30 KB uncompressed; Lighthouse accessibility >= 95 and performance >= 90. These are targets, not field measurements. Accessibility owner: event frontend maintainer. Keyboard navigation, mobile layout and link behavior are covered in the delivered Playwright verification.
+## Publishing
+
+Pushing to `origin` runs CI. Each push to `main` also runs **Publish website**, rebuilds the current source, and publishes only `dist/`. In Settings → Pages, the source must be **GitHub Actions**, not a branch root (which would render this README instead of the website). Manual workflow dispatch is also available. The live site is https://chenxdeng.github.io/qiqc-challenge-web/. The existing GFdemo2 demo is separate.
+
+The retained `demo` remote is for explicit legacy demo updates; normal pushes target `origin`. Do not push to it unless a legacy demo update is intended.
+
+## Current interactions
+
+- A single title, introduction and slogan move from the centered opening into the overview as the user scrolls. The Rabi field transitions from a large background to the upper-right corner.
+- The ideal two-level Rabi illustration is decorative, not experimental data. Each frame represents a separate constant-amplitude experiment. Reduced motion disables autoplay.
+- Prize amounts count up only after the overview is revealed and the amounts are visible. The date-driven timeline uses the UTC+8 calendar, with a current-status tooltip.
+- Task has four directly selectable, keyboard-accessible stages. Evaluation separates Rules and Results, with seven independent reading checkboxes; proposed scoring and review details are marked as proposed.
+- Registration opens an information dialog until a registration URL is configured. Participant Guide opens the public PDF. Email links open the mail application and do not send automatically.
+- Hover motion, FAQ disclosure, section navigation and the header cursor respect reduced-motion preferences.
+
+## Attribution
+
+See `THIRD-PARTY-NOTICES.md` and the icon notices in `src/assets/`. The AGPL requirement described on the website applies to submitted competition harnesses; it does not automatically relicense this website or the MIT-licensed Quantum-Harbor repository.
